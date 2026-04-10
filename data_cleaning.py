@@ -15,7 +15,7 @@ labels = ['young Adult','Adult','Middle-aged','Senior']
 df['age_group'] = pd.qcut(df['age'], q=4, labels = labels)
 df[['age','age_group']].head(100)
 df['freq_of_purchases'].unique()
-
+# create column purchase_frequency_days
 frequency_mapping ={'Fortnightly': 14,
  'Weekly':7,
  'Annually':365,
@@ -25,3 +25,7 @@ frequency_mapping ={'Fortnightly': 14,
  'Every 3 Months':90
                    }
 df['purchase_frequency_days'] = df['freq_of_purchases'].map(frequency_mapping)
+df[['discount_applied', 'promo_code_used']].head(10)
+(df['discount_applied'] == df['promo_code_used']).all()
+df = df.drop('promo_code_used',axis=1)
+df.columns
