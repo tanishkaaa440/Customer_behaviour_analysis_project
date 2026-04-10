@@ -10,3 +10,7 @@ df.columns = df.columns.str.lower()
 df.columns =  df.columns.str.replace(' ','_')
 df = df.rename(columns={'purchase_amount_(usd)':'purchase_amount_usd'})
 df = df.rename(columns={'frequency_of_purchases':'freq_of_purchases'})
+#create a column age_group
+labels = ['young Adult','Adult','Middle-aged','Senior']
+df['age_group'] = pd.qcut(df['age'], q=4, labels = labels)
+df[['age','age_group']].head(100)
