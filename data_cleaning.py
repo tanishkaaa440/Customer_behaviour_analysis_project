@@ -14,3 +14,14 @@ df = df.rename(columns={'frequency_of_purchases':'freq_of_purchases'})
 labels = ['young Adult','Adult','Middle-aged','Senior']
 df['age_group'] = pd.qcut(df['age'], q=4, labels = labels)
 df[['age','age_group']].head(100)
+df['freq_of_purchases'].unique()
+
+frequency_mapping ={'Fortnightly': 14,
+ 'Weekly':7,
+ 'Annually':365,
+ 'Quarterly':90,
+ 'Bi-Weekly':14,
+ 'Monthly':30,
+ 'Every 3 Months':90
+                   }
+df['purchase_frequency_days'] = df['freq_of_purchases'].map(frequency_mapping)
